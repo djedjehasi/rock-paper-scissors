@@ -20,7 +20,7 @@ function computerPlay() {
     
 
 
-const palyerSelection = "rock";
+const palyerSelection = "scissors";
 computerSelection = computerPlay();
 
 let palayerWins;
@@ -30,11 +30,11 @@ function palyRound(playerSelection, computerSelection){
     if (palyerSelection === "rock") {
         switch (computerSelection){
             case "rock":
-                return "rock and rock are equall, try again!";
+                return "rock and rock are equal, try again!";
                 break;
             case "paper":
                 computerWins ++;
-                return "paper is stronger then rock, you lose!";
+                return "rock is weaker then paper , you lose!";
                 break;
             case "scissors":
                 palayerWins ++;
@@ -42,10 +42,39 @@ function palyRound(playerSelection, computerSelection){
                 break;
             default:
                 return "there is an issue!!";
-                break;
         }
-    } else if(palyerSelection === "paper") {
-        return "there is a problem!"
+    } else if (palyerSelection === "paper") {
+        switch (computerSelection){
+            case "rock":
+                palayerWins ++;
+                return "paper is stronger then rock, you win!";
+                break;
+            case "paper":
+                return "paper and paper are equal, try again!"
+                break;
+            case "scissors":
+                computerWins ++;
+                return "paper is weaker then paper, you lose!";
+                break;
+            defualt:
+            return "there is an issue!!";
+        }
+    } else if (palyerSelection === "scissors") {
+        switch (computerSelection){
+            case "rock":
+                computerWins ++;
+                return "scissors are weaker then rock, you lose!";
+                break;
+            case "paper":
+                palayerWins ++;
+                return "scissors are stronger then paper, you win!";
+                break;
+            case "scissors":
+                return "scissors and scissors are equal, try again!";
+                break;
+            default:
+                return "there is an issue!!"
+        }
     }
 
 }
