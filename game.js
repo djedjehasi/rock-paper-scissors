@@ -28,7 +28,7 @@ function computerPlay() {
 
  
 // round game function. taking value of prompt and test it agains computer secltion to find the winner and print some statment. 
-function palyRound(palyerSelection, computerSelection){
+function playRound(palyerSelection, computerSelection){
     if (palyerSelection.toLowerCase() == "rock") {
         switch (computerSelection){
             case "rock":
@@ -86,8 +86,8 @@ function palyRound(palyerSelection, computerSelection){
         for(let i = 0; i < 5; i++){                                         // start of loop;
             palyerChoise = prompt("rock, paper or scissors?");              // askinf for value;
             computerChoice = computerPlay();                                // initilazing computer value;
-            palyRound(palyerChoise, computerChoice);                        // run round of the game;
-            console.log(palyRound(palyerChoise, computerChoice));           // print statment of win, lose or tie;
+            playRound(palyerChoise, computerChoice);                        // run round of the game;
+            console.log(playRound(palyerChoise, computerChoice));           // print statment of win, lose or tie;
         }                                                                   // end of the loop; 
         if (palayerWins > computerWins){                                    // test who wins and print winner statment;
             console.log("congratulations! you won!")
