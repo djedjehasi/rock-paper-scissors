@@ -10,7 +10,6 @@ let computerWins = 0;
 // computer selction function
 function computerPlay() {
     let shape = Math.floor(Math.random() * 3); // randomised numbers 0 - 2 and value then with one of the hand shape of the game.
-    let hand;
 
     switch (shape){
         case 0:
