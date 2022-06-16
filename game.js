@@ -1,8 +1,16 @@
+// declartion of global scoped variables:
 let hand;
+let palyerSelection; 
+let computerSelection;
+let palayerWins = 0;
+let computerWins = 0;  
 
+// function declartions:
+
+// computer selction function
 function computerPlay() {
-    let shape = Math.floor(Math.random() * 3);
-    
+    let shape = Math.floor(Math.random() * 3); // randomised numbers 0 - 2 and value then with one of the hand shape of the game.
+    let hand;
 
     switch (shape){
         case 0:
@@ -17,17 +25,11 @@ function computerPlay() {
     }
     return hand;
 }
-    
 
-
-const palyerSelection = "scissors";
-computerSelection = computerPlay();
-
-let palayerWins;
-let computerWins;
-
-function palyRound(playerSelection, computerSelection){
-    if (palyerSelection === "rock") {
+ 
+// round game function. taking value of prompt and test it agains computer secltion to find the winner and print some statment. 
+function palyRound(palyerSelection, computerSelection){
+    if (palyerSelection.toLowerCase() == "rock") {
         switch (computerSelection){
             case "rock":
                 return "rock and rock are equal, try again!";
@@ -43,7 +45,7 @@ function palyRound(playerSelection, computerSelection){
             default:
                 return "there is an issue!!";
         }
-    } else if (palyerSelection === "paper") {
+    } else if (palyerSelection.toLowerCase() == "paper") {
         switch (computerSelection){
             case "rock":
                 palayerWins ++;
@@ -54,12 +56,12 @@ function palyRound(playerSelection, computerSelection){
                 break;
             case "scissors":
                 computerWins ++;
-                return "paper is weaker then paper, you lose!";
+                return "paper is weaker then scissors, you lose!";
                 break;
             defualt:
             return "there is an issue!!";
         }
-    } else if (palyerSelection === "scissors") {
+    } else if (palyerSelection.toLowerCase() == "scissors") {
         switch (computerSelection){
             case "rock":
                 computerWins ++;
@@ -74,9 +76,24 @@ function palyRound(playerSelection, computerSelection){
                 break;
             default:
                 return "there is an issue!!"
+        }     
+    } else {
+        return ("you have missed typed!!");
+    }
+}
+// game function: 5 runs of play round. 
+    function game (){
+        for(let i = 0; i < 5; i++){                                         // start of loop;
+            palyerChoise = prompt("rock, paper or scissors?");              // askinf for value;
+            computerChoice = computerPlay();                                // initilazing computer value;
+            palyRound(palyerChoise, computerChoice);                        // run round of the game;
+            console.log(palyRound(palyerChoise, computerChoice));           // print statment of win, lose or tie;
+        }                                                                   // end of the loop; 
+        if (palayerWins > computerWins){                                    // test who wins and print winner statment;
+            console.log("congratulations! you won!")
+        } else {
+            console.log("to bad, you lose..")
         }
     }
-
-}
-
-console.log(palyRound(palyerSelection, computerSelection))
+// invoke the game function:
+game(); 
