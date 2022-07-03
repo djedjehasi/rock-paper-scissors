@@ -1,25 +1,26 @@
 // declartion of global scoped variables:
-let hand;
+
 let palyerSelection; 
 let computerSelection;
-let palayerWins = 0;
+let playerWins = 0;
 let computerWins = 0;  
-
+const shapes = ["rock", "paper", "sicssors"]
 // function declartions:
 
 // computer selction function
 function computerPlay() {
+    let hand;
     let shape = Math.floor(Math.random() * 3); // randomised numbers 0 - 2 and value then with one of the hand shape of the game.
 
     switch (shape){
         case 0:
-            hand = "rock";
+            hand = shapes[0];
             break;
         case 1:
-            hand = "paper";
+            hand =shapes[1];
             break;
         case 2:
-            hand = "scissors";
+            hand = shapes[2];
             break;
     }
     return hand;
@@ -28,57 +29,34 @@ function computerPlay() {
  
 // round game function. taking value of prompt and test it agains computer secltion to find the winner and print some statment. 
 function playRound(palyerSelection, computerSelection){
-    if (palyerSelection.toLowerCase() == "rock") {
-        switch (computerSelection){
-            case "rock":
-                return "rock and rock are equal, try again!";
-                break;
-            case "paper":
-                computerWins ++;
-                return "rock is weaker then paper , you lose!";
-                break;
-            case "scissors":
-                palayerWins ++;
-                return "rock is stronger then scissors, you win!";
-                break;
-            default:
-                return "there is an issue!!";
+    if (palyerSelection.toLowerCase() === computerPlay) {
+        return "tie"
+    }else if(palyerSelection.toLowerCase() === shapes[0]){
+        if (computerPlay == shapes[1]){
+            return "Paper is waeker then rock. You lose!"
+            computerWins++;
+        }else{
+            return "Rock is stronger then scissors. You win!"
+        }       playerWins++;
+    }else if(palyerSelection.toLowerCase() === shapes[1]){
+        if (computerPlay === shapes[0]){
+            return "Paper is stronger then rock. You win!"
+            playerWins++;
+        }else{
+            return "Scissors is stronger then paper. You lose!"
+            computerWins++;
         }
-    } else if (palyerSelection.toLowerCase() == "paper") {
-        switch (computerSelection){
-            case "rock":
-                palayerWins ++;
-                return "paper is stronger then rock, you win!";
-                break;
-            case "paper":
-                return "paper and paper are equal, try again!"
-                break;
-            case "scissors":
-                computerWins ++;
-                return "paper is weaker then scissors, you lose!";
-                break;
-            defualt:
-            return "there is an issue!!";
+    }else if (palyerSelection.toLowerCase() === shapes[2]){
+        if(computerPlay === shapes[0]){
+            return "Rock is stronger then scissors. You Lose"
+            computerWins++;
+        } else{
+            return "Scissors is stronger then paper. You win!"
+            playerWins++;
         }
-    } else if (palyerSelection.toLowerCase() == "scissors") {
-        switch (computerSelection){
-            case "rock":
-                computerWins ++;
-                return "scissors are weaker then rock, you lose!";
-                break;
-            case "paper":
-                palayerWins ++;
-                return "scissors are stronger then paper, you win!";
-                break;
-            case "scissors":
-                return "scissors and scissors are equal, try again!";
-                break;
-            default:
-                return "there is an issue!!"
-        }     
-    } else {
-        return ("you have missed typed!!");
     }
+
+
 }
 // game function: 5 runs of play round. 
     function game (){
